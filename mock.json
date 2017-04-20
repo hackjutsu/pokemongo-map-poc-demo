@@ -1,0 +1,20 @@
+[
+  {
+    "latitude": 34.4255028,
+    "longitude": -119.7007601,
+    "expire": 1522992648000,
+    "pokemon_id": 237
+  },
+  {
+    "latitude": 34.424988,
+    "longitude": -119.6986494,
+    "expire": 1522992648000,
+    "pokemon_id": 200
+  },
+  {
+    "latitude": 34.4182087,
+    "longitude": -119.7039709,
+    "expire": 1522992648000,
+    "pokemon_id": 100
+  }
+]
