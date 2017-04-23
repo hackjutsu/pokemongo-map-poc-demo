@@ -1,3 +1,5 @@
+var DBG = "-----> ";
+
 var map_manager = {
     map : null,
     map_items: []
@@ -15,7 +17,7 @@ map_manager.map_items = [
 
 function loadMapScenario() {
     map_manager.map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
-        credentials: '<put your Bing map key here>'
+        credentials: 'Al-3wugGniwAtj-AqGAD9Adw7Z-fHs2ONjPEkSz0YSKLXssIyQlxwXfLHi3-c7qj'
     });
     add_pokemon_layer();
 }
@@ -68,9 +70,32 @@ function refresh_pokemon_layer() {
 // 4. Connect with REST API
 function refresh_pokemon_data() {
   // Get boundary of current map view
-  var bounds = map_manager.map.getBounds();
-
+  var bounds = map_manager.map.getBounds(); 
+  console.log(DBG + "north bound: " + bounds.getNorth());
+  console.log(DBG + "south bound: " + bounds.getSouth());
+  console.log(DBG + "east bound: " + bounds.getEast());
+  console.log(DBG + "west bound: " + bounds.getWest());
+  
   // Request pokemons in current map view
+  var apigClient = apigClientFactory.newClient();
+  var params = {
+    north: bounds.getNorth(),
+    south: bounds.getSouth(),
+    west: bounds.getWest(),
+    east: bounds.getEast(),
+  };
+
+  var body = { };
+  var additionalParams = { };
+
+  apigClient.mapPokemonsGet(params, body, additionalParams)
+    .then(function(result){
+        //This is where you would put a success callback
+        console.log(DBG + JSON.stringify(result.data))
+        map_manager.map_items = result.data;    
+    }).catch( function(result){
+        //This is where you would put an error callback
+    });
 }
 
 window.setInterval(refresh_pokemon_data, 5000);
