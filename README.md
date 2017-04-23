@@ -10,7 +10,7 @@ http://hackjutsu.com/pokemongo-map-poc-demo/
 ## Data source
 All Pokemon data, which are essentially fake, are generated randomly by a [mock API](https://github.com/hackjutsu/mock_pgoapi). In principle, there is no communction between the crawlers and the real Pokemon Go servers.
 
-## How it works?
+## System Architecture
 ![](./architecture_frontend.png)
 
 A distributed crawler system that achieves heuristic data crawling based on geographical location information, said system comprising: 
@@ -22,5 +22,11 @@ A distributed crawler system that achieves heuristic data crawling based on geog
 5. A crawler subsystem constructed by said crawler cluster, retrieves said geographical locations information from said message queue subsystem, and gets fake Pokemons data from a mock Pokemon go API, and saves said fake Pokemons data to a database,
 4. A database subsystem constructed by said database, stores said Pokemons data.
 
+>This repository contains an implementation for the web app. An implemenation for the query server and an implementation of the crawler server can be found [here](https://github.com/hackjutsu/pokemongo-map-poc). 
+
+## Resource
+- [mock pkgoapi](https://github.com/hackjutsu/mock_pgoapi)
+- [pokemonGo map webapp boilerplate](https://github.com/hackjutsu/pokemon-go-map-boilerplate)
+
 ## License
-MIT
+[MIT](./LICENSE)
