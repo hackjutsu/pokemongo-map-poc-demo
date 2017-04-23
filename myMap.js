@@ -6,14 +6,14 @@ var map_manager = {
 }
 
 // 1. Define pokemon data format, create mock pokemon data
-map_manager.map_items = [
-    {
-      "pokemon_id": 25,
-      "expire": 1491294979,
-      "longitude": -119.7036556,
-      "latitude": 34.4205934,
-    }
-]
+// map_manager.map_items = [
+//     {
+//       "pokemon_id": 25,
+//       "expire": 1491294979,
+//       "longitude": -119.7036556,
+//       "latitude": 34.4205934,
+//     }
+// ]
 
 function loadMapScenario() {
     map_manager.map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
