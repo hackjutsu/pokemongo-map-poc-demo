@@ -10,15 +10,14 @@ All Pokemon data, which are essentially fake, are generated randomly by a [mock 
 ## How it works?
 ![](./architecture_frontend.png)
 
-1. A web app sends requests with locations to an AWS API gateway
-2. Said AWS API gateway routes said requests to a query cluster
-3. Said query cluster queries for Pokemons data by said locations from a PostgreSQL database on AWS
-4. Said database returns Pokemons data within said locations
-5. Said query cluster returns said Pokemons data to said web app
-4. Said query cluster sends said locations to an message queue
-5. A crawler cluster retrieves said locations from said message queue
-6. Said crawler cluster gets fake Pokemons data from a mock Pokemon go api
-7. Said crawler cluster saves said fake Pokemons data to said PostgreSQL database on AWS
+A distributed crawler system that achieves heuristic data crawling based on geographical location information, said system comprising: 
+
+1. A web app sends network requests with said geographical locations information to an API gateway,
+2. An API gateway subsystem constructed by said API gateways, routes said requests to a query cluster,
+3. A query subsystem constructed by said query cluster, queries for Pokemons data based on said geographical locations information from a database on AWS, and returns said Pokemon data to said web app, and sends said geographical locations information to message queues,
+4. A message queue subsystem constructed from said message queues, stores said messages from said query subsystem, and provides said messages to a crawler cluster
+5. A crawler subsystem constructed by said crawler cluster, retrieves said geographical locations information from said message queue subsystem, and gets fake Pokemons data from a mock Pokemon go API, and saves said fake Pokemons data to a database,
+4. A database subsystem constructed by said database, stores said Pokemons data.
 
 ## License
 MIT
